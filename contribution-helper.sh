@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+rm *.log > /dev/null
+
 compgen -c > binaries.log
 
 echo "Found $(wc -l binaries.log) binaries in PATH"
@@ -14,7 +16,7 @@ do
 	then
 		echo "🎉 $bin not found! Please contribute a tldr page for $bin."
 
-		((count=count+1))
+		count=$((count + 1))
 
 		echo $bin | tee -a contribution-list.log > /dev/null
 	fi
